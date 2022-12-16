@@ -20,6 +20,8 @@
                     <v-text-field
                       v-model="cep"
                       v-mask.raw="'#####-###'"
+                      solo
+                      prepend-inner-icon="mdi-map-marker"
                       :rules="cepRules"
                       label="Informe o CEP"
                       placeholder="00000-000"
