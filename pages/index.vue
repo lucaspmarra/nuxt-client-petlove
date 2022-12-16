@@ -10,7 +10,7 @@
           <v-sheet
             min-height="20vh"
             rounded="lg"
-            class="d-flex align-center justify-center"
+            class="d-flex align-center justify-center text-center"
           >
             <v-form v-model="valid">
               <v-container>
