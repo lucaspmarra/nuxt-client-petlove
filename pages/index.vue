@@ -10,6 +10,7 @@
           <v-sheet
             min-height="20vh"
             rounded="lg"
+            elevation="5"
             class="d-flex align-center justify-center text-center"
           >
             <v-form v-model="valid">
@@ -25,6 +26,7 @@
                       required
                     ></v-text-field>
                     <v-btn
+                      :loading="loading"
                       color="primary"
                       elevation="2"
                       type="submit"
@@ -42,6 +44,7 @@
             v-if="show"
             min-height="20vh"
             rounded="lg"
+            elevation="5"
             class="d-flex align-center justify-center"
           >
             <v-container>
@@ -50,7 +53,7 @@
                   {{ error }}
                 </v-col>
               </v-row>
-              <v-row v-else>
+              <v-row>
                 <v-col cols="12">
                   <p><strong>CEP:</strong> {{ data.cep }}</p>
                   <p><strong>Logradouro:</strong> {{ data.logradouro }}</p>
@@ -78,6 +81,7 @@ export default {
       error: null,
       valid: false,
       show: false,
+      loading: null,
       cep: '',
       cepRules: [(v) => !!v || 'CEP não pode estar vazio'],
     }
@@ -85,15 +89,18 @@ export default {
 
   methods: {
     async fetchCep() {
+      this.loading = true
+      this.error = false
       try {
         const response = await this.$axios.$get(
           `https://node-fetch.onrender.com/${this.cep}`
         )
         this.data = response
         this.show = true
-        this.error = false
       } catch (error) {
         this.error = error
+      } finally {
+        this.loading = false
       }
     },
   },

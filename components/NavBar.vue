@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar app color="white" flat>
+  <v-app-bar app color="white" flat elevation="3">
     <v-tabs centered class="ml-n9" color="grey darken-1">
       <v-tab v-for="link in links" :key="link">
         {{ link }}
