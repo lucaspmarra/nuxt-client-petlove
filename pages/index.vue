@@ -92,11 +92,7 @@ export default {
         this.data = response
         this.show = true
         this.error = false
-        // eslint-disable-next-line no-console
-        // console.log(response)
       } catch (error) {
-        // eslint-disable-next-line no-console
-        // console.log(error)
         this.error = error
       }
     },
