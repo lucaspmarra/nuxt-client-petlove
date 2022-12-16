@@ -6,7 +6,7 @@
         <v-col cols="12" sm="4"></v-col>
 
         <!-- Main col remains on center -->
-        <v-col cols="12" sm="4">
+        <v-col cols="12" sm="2">
           <v-sheet
             min-height="20vh"
             rounded="lg"
@@ -91,16 +91,17 @@ export default {
     async fetchCep() {
       this.loading = true
       this.error = false
+      this.show = false
       try {
         const response = await this.$axios.$get(
           `https://node-fetch.onrender.com/${this.cep}`
         )
         this.data = response
-        this.show = true
       } catch (error) {
         this.error = error
       } finally {
         this.loading = false
+        this.show = true
       }
     },
   },
