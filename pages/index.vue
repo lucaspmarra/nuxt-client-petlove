@@ -3,15 +3,15 @@
     <v-container fill-height>
       <v-row align="center" justify="center">
         <!-- Add a left col to page -->
-        <v-col cols="12" sm="4"></v-col>
+        <!--      <v-col cols="12" sm="4"></v-col> -->
 
         <!-- Main col remains on center -->
-        <v-col cols="12" sm="2">
+        <v-col align="center" justify="center">
           <v-sheet
             min-height="20vh"
             rounded="lg"
             elevation="5"
-            class="d-flex align-center justify-center text-center"
+            class="d-flex align-center justify-center container_main"
           >
             <v-form v-model="valid">
               <v-container>
@@ -34,8 +34,8 @@
                       type="submit"
                       @click.prevent="fetchCep"
                     >
-                      <v-icon left> mdi-magnify </v-icon>Pesquisar</v-btn
-                    >
+                      <v-icon left>mdi-magnify</v-icon>Buscar CEP
+                    </v-btn>
                   </v-col>
                 </v-row>
               </v-container>
@@ -47,20 +47,30 @@
             min-height="20vh"
             rounded="lg"
             elevation="5"
-            class="d-flex align-center justify-center"
+            class="d-flex align-center justify-center container_main"
           >
             <v-container>
               <v-row v-if="error">
-                <v-col cols="12">
-                  {{ error }}
-                </v-col>
+                <v-col cols="12">{{ error }}</v-col>
               </v-row>
-              <v-row>
+              <v-row v-if="!error">
                 <v-col cols="12">
-                  <p><strong>CEP:</strong> {{ data.cep }}</p>
-                  <p><strong>Logradouro:</strong> {{ data.logradouro }}</p>
-                  <p><strong>Localidade:</strong> {{ data.localidade }}</p>
-                  <p><strong>UF:</strong> {{ data.uf }}</p>
+                  <p>
+                    <strong>CEP:</strong>
+                    {{ data.cep }}
+                  </p>
+                  <p>
+                    <strong>Logradouro:</strong>
+                    {{ data.logradouro }}
+                  </p>
+                  <p>
+                    <strong>Localidade:</strong>
+                    {{ data.localidade }}
+                  </p>
+                  <p>
+                    <strong>UF:</strong>
+                    {{ data.uf }}
+                  </p>
                 </v-col>
               </v-row>
             </v-container>
@@ -68,7 +78,7 @@
         </v-col>
 
         <!-- Add a right col to page -->
-        <v-col cols="12" sm="4"></v-col>
+        <!--  <v-col cols="12" sm="4"></v-col> -->
       </v-row>
     </v-container>
   </v-main>
@@ -77,7 +87,7 @@
 <script>
 export default {
   name: 'IndexPage',
-  data() {
+  data () {
     return {
       data: [],
       error: null,
@@ -90,7 +100,7 @@ export default {
   },
 
   methods: {
-    async fetchCep() {
+    async fetchCep () {
       this.loading = true
       this.error = false
       this.show = false
@@ -109,4 +119,5 @@ export default {
   },
 }
 </script>
-<style></style>
+<style>
+</style>
