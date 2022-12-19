@@ -49,12 +49,15 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+  server: {
+    port: 8881,
+  },
   router: {
     base: '/nuxt-client-petlove',
     mode: 'hash',
   },
-  
-    // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
+
+  // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['@/assets/css/variables.scss'],
   },
