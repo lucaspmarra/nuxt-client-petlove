@@ -1,3 +1,5 @@
+import colors from 'vuetify/es5/util/colors'
+
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
@@ -21,7 +23,7 @@ export default {
   css: ['@/assets/css/style.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~plugins/vue-the-mask.js'],
+  plugins: ['@/plugins/vue-the-mask.js'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -51,4 +53,11 @@ export default {
     base: '/nuxt-client-petlove',
     mode: 'hash',
   },
+  
+    // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
+  vuetify: {
+    customVariables: ['@/assets/css/variables.scss'],
+  },
+
+
 }

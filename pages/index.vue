@@ -1,55 +1,49 @@
 <template>
-  <v-main class="grey lighten-3">
+  <v-main class="content">
     <v-container fill-height>
-      <v-row align="center" justify="center">
-        <!-- Add a left col to page -->
-        <!--      <v-col cols="12" sm="4"></v-col> -->
-
-        <!-- Main col remains on center -->
+      <v-row>
         <v-col align="center" justify="center">
           <v-sheet
             min-height="20vh"
             rounded="lg"
             elevation="5"
-            class="d-flex align-center justify-center container_main"
+            class="content__sheet content_sheet-search"
           >
             <v-form v-model="valid">
               <v-container>
-                <v-row>
-                  <v-col cols="12">
-                    <v-text-field
-                      v-model="cep"
-                      v-mask.raw="'#####-###'"
-                      solo
-                      prepend-inner-icon="mdi-map-marker"
-                      :rules="cepRules"
-                      label="Informe o CEP"
-                      placeholder="00000-000"
-                      required
-                    ></v-text-field>
-                    <v-btn
-                      :loading="loading"
-                      color="primary"
-                      elevation="2"
-                      type="submit"
-                      @click.prevent="fetchCep"
-                    >
-                      <v-icon left>mdi-magnify</v-icon>Buscar CEP
-                    </v-btn>
-                  </v-col>
-                </v-row>
+                <v-text-field
+                  v-model="cep"
+                  v-mask.raw="'#####-###'"
+                  solo
+                  prepend-inner-icon="mdi-map-marker"
+                  :rules="cepRules"
+                  label="Informe o CEP"
+                  placeholder="00000-000"
+                  required
+                ></v-text-field>
+
+                <v-btn
+                  :loading="loading"
+                  :disabled="!cep ||cep >= 3"
+                  class="content__sheet-button"
+                  elevation="2"
+                  type="submit"
+                  @click.prevent="fetchCep"
+                >
+                  <v-icon left>mdi-magnify</v-icon>Buscar CEP
+                </v-btn>
               </v-container>
             </v-form>
           </v-sheet>
-          <br />
+
           <v-sheet
             v-if="show"
             min-height="20vh"
             rounded="lg"
             elevation="5"
-            class="d-flex align-center justify-center container_main"
+            class="content__sheet content__sheet-result"
           >
-            <v-container>
+            <v-container class="content__container">
               <v-row v-if="error">
                 <v-col cols="12">{{ error }}</v-col>
               </v-row>
@@ -71,14 +65,19 @@
                     <strong>UF:</strong>
                     {{ data.uf }}
                   </p>
+                  <p>
+                    <v-badge icon="mdi-open-in-new" color="blue-grey lighten-2">
+                      <a
+                        :href="`https://www.google.com.br/maps/search/${data.logradouro}`"
+                        target="_blank"
+                      >Google Maps</a>
+                    </v-badge>
+                  </p>
                 </v-col>
               </v-row>
             </v-container>
           </v-sheet>
         </v-col>
-
-        <!-- Add a right col to page -->
-        <!--  <v-col cols="12" sm="4"></v-col> -->
       </v-row>
     </v-container>
   </v-main>
