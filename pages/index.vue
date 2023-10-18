@@ -105,7 +105,7 @@ export default {
       this.show = false
       try {
         const response = await this.$axios.$get(
-          `https://node-fetch.onrender.com/${this.cep}`
+          `https://free-api-request.onrender.com/${this.cep}`
         )
         this.data = response
       } catch (error) {
