@@ -58,12 +58,20 @@
                     {{ data.logradouro }}
                   </p>
                   <p>
+                    <strong>Bairro:</strong>
+                    {{ data.bairro }}
+                  </p>
+                  <p>
                     <strong>Localidade:</strong>
                     {{ data.localidade }}
                   </p>
                   <p>
                     <strong>UF:</strong>
                     {{ data.uf }}
+                  </p>
+                  <p>
+                    <strong>DDD:</strong>
+                    {{ data.ddd }}
                   </p>
                   <p>
                     <v-badge icon="mdi-open-in-new" color="blue-grey lighten-2">
